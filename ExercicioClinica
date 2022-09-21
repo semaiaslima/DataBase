@@ -1,0 +1,47 @@
+create database Clínica;
+use Clínica;
+
+create table ambulatorio(
+	nroa int primary key auto_increment,
+    andar int not null,
+    capacidade smallint not null
+);
+
+create table medicos(
+	codm int primary key auto_increment,
+    nome varchar(40) not null,
+    idade smallint not null,
+    especialidade char(20),
+    cpf varchar(11), 
+    cidade varchar(30),
+    foreign key (nroa) references ambulatorio(nroa)
+); 
+
+create table pacientes(
+	codp int primary key auto_increment,
+    nome varchar(40) not null,
+    idade smallint not null,
+    cidade char(30),
+    cpf varchar(11),
+    doenca varchar(40) not null
+);
+
+create table funcionarios(
+	codf int primary key auto_increment,
+    nome varchar(40) not null,
+    idade smallint,
+    cpf varchar(11),
+    cidade varchar(30),
+    salario numeric(10,2),
+    cargo varchar(20)
+);
+
+create table consultas(
+	numconsulta int,
+    codm int,
+    codp int,
+    dataa date,
+    hora time
+);
+
+show tables;
